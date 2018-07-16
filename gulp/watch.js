@@ -6,7 +6,7 @@ var livereload = require('gulp-livereload');
 module.exports = function(gulp, plugins) {
   return function() {
     var bundle = plugins.browserify({
-      entries: './src/ngFormBuilder.js',
+      entries: './src/ngFormBuilder-full.js',
       debug: true
     });
 
@@ -15,7 +15,7 @@ module.exports = function(gulp, plugins) {
     bundle = plugins.watchify(bundle);
     bundle.on('update', function(files) {
       console.log('Changed files: ', files.map(path.relative.bind(path, process.cwd())).join(', '));
-      console.log('Rebuilding dist/ngFormBuilder.js...');
+      console.log('Rebuilding dist/ngFormBuilder-full.js...');
       build();
     });
     bundle.on('log', function(msg) {
