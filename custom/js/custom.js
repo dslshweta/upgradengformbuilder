@@ -9,7 +9,7 @@ angular.module('formBuilder')
                     {
                         name: 'Display',
                         template: 'formio/components/custom/display.html'
-                    },
+                    }, 
                     {
                         name: 'Conditional',
                         template: 'formio/components/common/conditional.html'

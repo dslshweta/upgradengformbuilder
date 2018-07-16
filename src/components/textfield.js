@@ -45,6 +45,7 @@ module.exports = function (app) {
       $templateCache.put('formio/components/textfield/basic.html',
         '<form-builder-option property="label"></form-builder-option>' +
         '<form-builder-option property="tooltip"></form-builder-option>' +
+        '<form-builder-option property="business_logic"></form-builder-option>' +
         '<form-builder-option property="errorLabel"></form-builder-option>' +
         '<form-builder-option property="multiple"></form-builder-option>' +
         '<form-builder-option property="validate.required"></form-builder-option>' 
