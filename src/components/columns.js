@@ -18,6 +18,10 @@ module.exports = function(app) {
         confirmRemove: true,
         views: [
           {
+            name: 'Basic',
+            template: 'formio/components/columns/basic.html'
+          },
+          {
             name: 'Display',
             template: 'formio/components/columns/display.html'
           },
@@ -36,6 +40,39 @@ module.exports = function(app) {
   app.run([
     '$templateCache',
     function($templateCache) {
+      //Basic Component template
+      $templateCache.put('formio/components/columns/basic.html',
+      '<ng-form>' +
+      '<form-builder-option property="label"></form-builder-option>' +
+      '<div class="form-group">' +
+        '<label form-builder-tooltip="The width, offset, push and pull settings for the columns">{{\'Column Properties\' | formioTranslate}}</label>' +
+        '<table class="table table-condensed">' +
+          '<thead>' +
+            '<tr>' +
+              '<th class="col-xs-2">{{\'Column\' | formioTranslate}}</th>' +
+              '<th class="col-xs-2">{{\'Width\' | formioTranslate}}</th>' +
+              '<th class="col-xs-2">{{\'Offset\' | formioTranslate}}</th>' +
+              '<th class="col-xs-2">{{\'Push\' | formioTranslate}}</th>' +
+              '<th class="col-xs-2">{{\'Pull\' | formioTranslate}}</th>' +
+              '<th class="col-xs-1"></th>' +
+            '</tr>' +
+          '</thead>' +
+          '<tbody>' +
+            '<tr ng-repeat="column in component.columns track by $index">' +
+              '<td class="col-xs-2"><input type="number" class="form-control" ng-value="$index + 1" disabled/></td>' +
+              '<td class="col-xs-2"><input type="number" class="form-control" min="1" max="12" ng-model="column.width"/></td>' +
+              '<td class="col-xs-2"><input type="number" class="form-control" min="0" max="12" ng-model="column.offset"/></td>' +
+              '<td class="col-xs-2"><input type="number" class="form-control" min="0" max="12" ng-model="column.push"/></td>' +
+              '<td class="col-xs-2"><input type="number" class="form-control" min="0" max="12" ng-model="column.pull"/></td>' +
+              '<td class="col-xs-1"><button type="button" class="btn btn-danger btn-xs" ng-click="removeColumn($index)" tabindex="-1"><span class="glyphicon glyphicon-remove-circle"></span></button></td>' +
+            '</tr>' +
+          '</tbody>' +
+        '</table>' +
+        '<button type="button" class="btn btn-default" ng-click="addColumn()">{{\'Add Column\' | formioTranslate}}</button>' +
+      '</div>' +
+      '<form-builder-option property="tableView"></form-builder-option>' +
+    '</ng-form>'
+    );
       $templateCache.put('formio/formbuilder/columns.html',
         '<div class="row">' +
           '<div class="col-xs-{{column.width || 6}} col-xs-offset-{{column.offset}} col-xs-push-{{column.push}} col-xs-pull-{{column.pull}}" component-form-group" ng-repeat="column in component.columns">' +

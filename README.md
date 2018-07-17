@@ -53,6 +53,18 @@ To remove default components or groups from the form builder, set them as disabl
     }]);
 ```
 
+Build Instructions
+=========================
+
+Run following commands from your project directory :
+
+npm install
+bower install
+npm install gulp --save-dev
+gulp build
+gulp watch
+
+
 Form.io
 ==============
 This project is provided by [Form.io](https://form.io), which is a combined form and API platform for Developers.

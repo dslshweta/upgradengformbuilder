@@ -42,6 +42,7 @@ module.exports = function(app) {
     '$templateCache',
     function($templateCache) {
       // Create the settings markup.
+      //Created Basic template
       $templateCache.put('formio/components/number/basic.html',
         '<form-builder-option property="label"></form-builder-option>' +
         '<form-builder-option property="tooltip"></form-builder-option>' +
