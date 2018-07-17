@@ -1,11 +1,15 @@
-module.exports = function(app) {
+module.exports = function (app) {
   app.config([
     'formioComponentsProvider',
-    function(formioComponentsProvider) {
+    function (formioComponentsProvider) {
       formioComponentsProvider.register('form', {
         fbtemplate: 'formio/formbuilder/form.html',
         icon: 'fa fa-wpforms',
         views: [
+          {
+            name: 'basic',
+            template: 'formio/components/form/basic.html'
+          },
           {
             name: 'Display',
             template: 'formio/components/form/display.html'
@@ -24,16 +28,18 @@ module.exports = function(app) {
           }
         ],
         documentation: 'http://help.form.io/userguide/#form',
-        onEdit: ['$scope', function($scope) {
+        onEdit: ['$scope', function ($scope) {
           $scope.forms = [];
           $scope.component.project = $scope.formio.projectId;
-          $scope.formio.loadForms({params: {
-            limit: 4294967295,
-            select: '_id,title,type'
-          }}).then(function(forms) {
+          $scope.formio.loadForms({
+            params: {
+              limit: 4294967295,
+              select: '_id,title,type'
+            }
+          }).then(function (forms) {
             var data = [];
             if ($scope.form._id) {
-              angular.forEach(forms, function(form) {
+              angular.forEach(forms, function (form) {
                 if (form._id !== $scope.form._id) {
                   data.push(form);
                 }
@@ -57,21 +63,23 @@ module.exports = function(app) {
       formComponent.controller = [
         '$scope',
         '$controller',
-        function(
+        function (
           $scope,
           $controller
         ) {
           if (!$scope.builder) {
-            return $controller(formController, {$scope: $scope});
+            return $controller(formController, { $scope: $scope });
           }
 
           var forms = {};
-          $scope.form = {title: 'Unknown form'};
-          $scope.formio.loadForms({params: {
-            limit: 4294967295,
-            select: '_id,title,type'
-          }}).then(function(formioForms) {
-            angular.forEach(formioForms, function(form) {
+          $scope.form = { title: 'Unknown form' };
+          $scope.formio.loadForms({
+            params: {
+              limit: 4294967295,
+              select: '_id,title,type'
+            }
+          }).then(function (formioForms) {
+            angular.forEach(formioForms, function (form) {
               forms[form._id] = form;
             });
 
@@ -84,7 +92,7 @@ module.exports = function(app) {
             }
           });
 
-          $scope.$watch('component.form', function(formId) {
+          $scope.$watch('component.form', function (formId) {
             if (!formId || !forms.hasOwnProperty(formId)) {
               return;
             }
@@ -96,26 +104,34 @@ module.exports = function(app) {
   ]);
   app.run([
     '$templateCache',
-    function($templateCache) {
+    function ($templateCache) {
       $templateCache.put('formio/formbuilder/form.html', '<span class="hidden-element-text">{{ form.title }} {{ form.type }}</span>');
 
       // Create the settings markup.
+      //Basic Component template
+      $templateCache.put('formio/components/form/basic.html',
+        '<form-builder-option property="label" label="Name" placeholder="Enter the name for this form field" title="The name for this field. It is only used for administrative purposes such as generating the automatic property name in the API tab (which may be changed manually)."></form-builder-option>' +
+        '<div class="form-group">' +
+        '<label for="form" form-builder-tooltip="The form to load within this form component..">{{\'Form\' | formioTranslate}}</label>' +
+        '<select class="form-control" id="form" name="form" ng-options="value._id as value.title for value in forms" ng-model="component.form"></select>' +
+        '</div>'
+      );
       $templateCache.put('formio/components/form/display.html',
         '<ng-form>' +
-          '<form-builder-option property="label" label="Name" placeholder="Enter the name for this form field" title="The name for this field. It is only used for administrative purposes such as generating the automatic property name in the API tab (which may be changed manually)."></form-builder-option>' +
-          '<form-builder-option property="hideLabel"></form-builder-option>' +
-          '<form-builder-option-label-position></form-builder-option-label-position>' +
-          '<div class="form-group">' +
-            '<label for="form" form-builder-tooltip="The form to load within this form component..">{{\'Form\' | formioTranslate}}</label>' +
-            '<select class="form-control" id="form" name="form" ng-options="value._id as value.title for value in forms" ng-model="component.form"></select>' +
-          '</div>' +
-          '<form-builder-option property="customClass"></form-builder-option>' +
-          '<form-builder-option property="reference"></form-builder-option>' +
-          '<form-builder-option property="clearOnHide"></form-builder-option>' +
-          '<form-builder-option property="protected"></form-builder-option>' +
-          '<form-builder-option property="persistent"></form-builder-option>' +
-          '<form-builder-option property="encrypted" class="form-builder-premium"></form-builder-option>' +
-          '<form-builder-option property="tableView"></form-builder-option>' +
+        '<form-builder-option property="label" label="Name" placeholder="Enter the name for this form field" title="The name for this field. It is only used for administrative purposes such as generating the automatic property name in the API tab (which may be changed manually)."></form-builder-option>' +
+        '<form-builder-option property="hideLabel"></form-builder-option>' +
+        '<form-builder-option-label-position></form-builder-option-label-position>' +
+        '<div class="form-group">' +
+        '<label for="form" form-builder-tooltip="The form to load within this form component..">{{\'Form\' | formioTranslate}}</label>' +
+        '<select class="form-control" id="form" name="form" ng-options="value._id as value.title for value in forms" ng-model="component.form"></select>' +
+        '</div>' +
+        '<form-builder-option property="customClass"></form-builder-option>' +
+        '<form-builder-option property="reference"></form-builder-option>' +
+        '<form-builder-option property="clearOnHide"></form-builder-option>' +
+        '<form-builder-option property="protected"></form-builder-option>' +
+        '<form-builder-option property="persistent"></form-builder-option>' +
+        '<form-builder-option property="encrypted" class="form-builder-premium"></form-builder-option>' +
+        '<form-builder-option property="tableView"></form-builder-option>' +
         '</ng-form>'
       );
     }

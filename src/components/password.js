@@ -6,6 +6,10 @@ module.exports = function(app) {
         icon: 'fa fa-asterisk',
         views: [
           {
+            name: 'Basic',
+            template: 'formio/components/password/basic.html'
+          },
+          {
             name: 'Display',
             template: 'formio/components/password/display.html'
           },
@@ -37,6 +41,7 @@ module.exports = function(app) {
       $templateCache
     ) {
       // Disable dragging on password inputs because it breaks dndLists
+      //Created Basic template
       var textFieldTmpl = $templateCache.get('formio/components/textfield.html');
       var passwordTmpl = textFieldTmpl.replace(
         /<input type="{{ component.inputType }}" /g,
@@ -44,6 +49,14 @@ module.exports = function(app) {
       );
       $templateCache.put('formio/components/password.html', passwordTmpl);
 
+      $templateCache.put('formio/components/password/basic.html',
+      '<form-builder-option property="label"></form-builder-option>' +
+      '<form-builder-option property="tooltip"></form-builder-option>' +
+      '<form-builder-option property="errorLabel"></form-builder-option>' +
+      '<form-builder-option property="validate.minLength"></form-builder-option>' +
+      '<form-builder-option property="multiple"></form-builder-option>' +
+      '<form-builder-option property="validate.required"></form-builder-option>' 
+    );
       // Create the settings markup.
       $templateCache.put('formio/components/password/display.html',
         '<ng-form>' +

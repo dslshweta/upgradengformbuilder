@@ -239,11 +239,11 @@ module.exports = ['debounce', function (debounce) {
           return component.group;
         });
 
-        $scope.formComponentsByGroup.resource = {};
-        $scope.formComponentGroups.resource = {
-          title: $scope.options.resourceTitle || 'Existing Resource Fields',
-          panelClass: 'subgroup-accordion-container',
-        };
+        // $scope.formComponentsByGroup.resource = {};
+        // $scope.formComponentGroups.resource = {
+        //   title: $scope.options.resourceTitle || 'Existing Resource Fields',
+        //   panelClass: 'subgroup-accordion-container',
+        // };
        
 
         // // Get the resource fields.

@@ -6,6 +6,10 @@ module.exports = function(app) {
         icon: 'fa fa-usd',
         views: [
           {
+            name: 'Basic',
+            template: 'formio/components/currency/basic.html'
+          },
+          {
             name: 'Display',
             template: 'formio/components/currency/display.html'
           },
@@ -38,6 +42,17 @@ module.exports = function(app) {
     '$templateCache',
     function($templateCache) {
       // Create the settings markup.
+      //Basic Component template
+      $templateCache.put('formio/components/currency/basic.html',
+      '<form-builder-option property="label"></form-builder-option>' +
+      '<form-builder-option property="tooltip"></form-builder-option>' +
+      '<form-builder-option property="errorLabel"></form-builder-option>' +
+      '<form-builder-option property="multiple"></form-builder-option>' +
+      '<form-builder-option property="delimiter"></form-builder-option>' +
+      '<form-builder-option property="decimalLimit" type="number" step="1" label="Decimal Places" placeholder="any" title="The maximum number of decimal places."></form-builder-option>' +
+      '<form-builder-option property="requireDecimal" type="checkbox" label="Require Decimal" title="Always show decimals, even if trailing zeros."></form-builder-option>' +
+      '<form-builder-option property="validate.required"></form-builder-option>' 
+    );
       $templateCache.put('formio/components/currency/display.html',
         '<ng-form>' +
           '<form-builder-option property="label"></form-builder-option>' +

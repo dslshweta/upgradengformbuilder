@@ -6,6 +6,10 @@ module.exports = function(app) {
         icon: 'fa fa-phone-square',
         views: [
           {
+            name: 'Basic',
+            template: 'formio/components/phoneNumber/basic.html'
+          },
+          {
             name: 'Display',
             template: 'formio/components/phoneNumber/display.html'
           },
@@ -38,6 +42,15 @@ module.exports = function(app) {
     '$templateCache',
     function($templateCache) {
       // Create the settings markup.
+      //Basic Component template
+      $templateCache.put('formio/components/phoneNumber/basic.html',
+      '<form-builder-option property="label"></form-builder-option>' +
+      '<form-builder-option property="tooltip"></form-builder-option>' +
+      '<form-builder-option property="errorLabel"></form-builder-option>' +
+      '<form-builder-option property="multiple"></form-builder-option>' +
+      '<form-builder-option property="validate.required"></form-builder-option>' 
+    );
+
       $templateCache.put('formio/components/phoneNumber/display.html',
         '<ng-form>' +
           '<form-builder-option property="label"></form-builder-option>' +

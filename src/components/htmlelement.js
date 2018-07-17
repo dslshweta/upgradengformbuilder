@@ -7,6 +7,10 @@ module.exports = function(app) {
         icon: 'fa fa-code',
         views: [
           {
+            name: 'Basic',
+            template: 'formio/components/htmlelement/basic.html'
+          },
+          {
             name: 'Display',
             template: 'formio/components/htmlelement/display.html'
           },
@@ -31,6 +35,25 @@ module.exports = function(app) {
       );
 
       // Create the settings markup.
+      $templateCache.put('formio/components/htmlelement/basic.html',
+      '<form-builder-option property="label"></form-builder-option>' +
+      '<form-builder-option property="tag" label="HTML Tag" placeholder="HTML Element Tag" title="The tag of this HTML element."></form-builder-option>' +
+      '<form-builder-option property="className" label="CSS Class" placeholder="CSS Class" title="The CSS class for this HTML element."></form-builder-option>' +
+      '<value-builder ' +
+        'data="component.attrs" ' +
+        'label="Attributes" ' +
+        'tooltip-text="The attributes for this HTML element. Only safe attributes are allowed, such as src, href, and title." ' +
+        'value-property="value" ' +
+        'label-property="attr" ' +
+        'value-label="Value" ' +
+        'label-label="Attribute" ' +
+        'no-autocomplete-value="true" ' +
+      '></value-builder>' +
+      '<div class="form-group">' +
+        '<label for="content" form-builder-tooltip="The content of this HTML element.">{{\'Content\' | formioTranslate}}</label>' +
+        '<textarea class="form-control" id="content" name="content" ng-model="component.content" placeholder="HTML Content" rows="3">{{ component.content }}</textarea>' +
+      '</div>'  
+    );
       $templateCache.put('formio/components/htmlelement/display.html',
         '<ng-form>' +
         '<form-builder-option property="label"></form-builder-option>' +
