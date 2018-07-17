@@ -244,7 +244,7 @@ module.exports = ['debounce', function (debounce) {
           title: $scope.options.resourceTitle || 'Existing Resource Fields',
           panelClass: 'subgroup-accordion-container',
         };
-       
+
 
         // // Get the resource fields.
         // console.log('------------------------',$scope.formComponentsByGroup);

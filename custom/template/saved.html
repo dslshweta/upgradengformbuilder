@@ -1,1 +1,17 @@
-<h1>Saved Form</h1>
+<div class="row top-row">
+    <h2 align="center">{{formDef.formTitle}}</h2>
+</div>
+
+<div>
+    <div class="col-md-2 form-list">
+        <ul>
+            <li ng-click="renderForm(form)" ng-repeat="form in formList track by $index">
+                {{form.formTitle}} 
+                <span ng-click="editForm(form,$index)" class="glyphicon glyphicon-edit text-primary float-right"></span>
+            </li>
+        </ul>
+    </div>
+    <div class="col-md-10">
+        <formio form="formDef"></formio>
+    </div>
+</div>

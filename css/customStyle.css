@@ -50,4 +50,24 @@
 
   .top-row {
     margin-top: 60px;
+    margin-bottom: 15px;
+  }
+
+  .form-list {
+    background-color: gainsboro;
+    padding: 15px;
+  }
+
+  .form-list ul{
+    list-style-type: none;
+  }
+  
+
+  .form-list ul li:hover {
+    color : blue;
+    cursor: pointer;
+  }
+
+  .form-list ul li span {
+    float: right;
   }

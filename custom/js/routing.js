@@ -7,12 +7,17 @@ angular.module('formBuilder')
 
         .state('create', {
             url: '/create',
-            templateUrl: './custom/template/create.html'
+            templateUrl: './custom/template/create.html',
+            params: {
+                obj: null
+            }
+            
         })
 
         .state('saved', {
             url: '/saved',
-            templateUrl: './custom/template/saved.html'
+            templateUrl: './custom/template/saved.html',
+            controller : savedFormController
         })
 
 });
