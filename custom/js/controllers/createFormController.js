@@ -43,6 +43,8 @@ function createFormController($rootScope, $scope, $stateParams,$state, OtherServ
         form.updatedAt = updatedAt;
         form.formId = formId;
 
+        console.log('chelllllllllllllll',form);
+
         formDefination.push(form); 
         
         StorageServiceHandler.setFormData(formDefination);
