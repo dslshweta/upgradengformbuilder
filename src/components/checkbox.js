@@ -41,6 +41,10 @@ module.exports = function(app) {
         }],
         views: [
           {
+            name: 'Basic',
+            template: 'formio/components/checkbox/basic.html'
+          },
+          {
             name: 'Display',
             template: 'formio/components/checkbox/display.html'
           },
@@ -73,6 +77,13 @@ module.exports = function(app) {
     '$templateCache',
     function($templateCache) {
       // Create the settings markup.
+      //Created Basic tab
+      $templateCache.put('formio/components/checkbox/basic.html',
+      '<form-builder-option property="label"></form-builder-option>' +
+      '<form-builder-option property="tooltip"></form-builder-option>' +
+      '<form-builder-option property="errorLabel"></form-builder-option>' +
+      '<form-builder-option property="validate.required"></form-builder-option>' 
+    );
       $templateCache.put('formio/components/checkbox/display.html',
         '<ng-form>' +
           '<form-builder-option property="label"></form-builder-option>' +

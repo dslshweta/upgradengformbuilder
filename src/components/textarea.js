@@ -6,6 +6,10 @@ module.exports = function(app) {
         icon: 'fa fa-font',
         views: [
           {
+            name: 'Basic',
+            template: 'formio/coponents/textarea/basic.html'
+          },
+          {
             name: 'Display',
             template: 'formio/components/textarea/display.html'
           },
@@ -70,6 +74,17 @@ module.exports = function(app) {
     '$templateCache',
     function($templateCache) {
       // Create the settings markup.
+      //Created Basic template
+      $templateCache.put('formio/coponents/textarea/basic.html',
+      '<form-builder-option property="label"></form-builder-option>' +
+      '<form-builder-option property="tooltip"></form-builder-option>' +
+      '<form-builder-option property="errorLabel"></form-builder-option>' + 
+      '<form-builder-option property="rows"></form-builder-option>'+ 
+      '<form-builder-option property="validate.minLength"></form-builder-option>' +
+      '<form-builder-option property="validate.maxLength"></form-builder-option>' +
+      '<form-builder-option property="multiple"></form-builder-option>' +
+      '<form-builder-option property="validate.required"></form-builder-option>' 
+    );
       $templateCache.put('formio/components/textarea/display.html',
         '<ng-form>' +
           '<form-builder-option property="label"></form-builder-option>' +

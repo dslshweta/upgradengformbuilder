@@ -6,6 +6,10 @@ module.exports = function(app) {
         icon: 'fa fa-pencil',
         views: [
           {
+            name: 'Basic',
+            template: 'formio/components/signature/basic.html'
+          },
+          {
             name: 'Display',
             template: 'formio/components/signature/display.html'
           },
@@ -34,6 +38,13 @@ module.exports = function(app) {
     '$templateCache',
     function($templateCache) {
       // Create the settings markup.
+      //Basic Component template
+      $templateCache.put('formio/components/textfield/basic.html',
+      '<form-builder-option property="footer" label="Footer Label" placeholder="Footer Label" title="The footer text that appears below the signature area."></form-builder-option>' +
+      '<form-builder-option property="tooltip"></form-builder-option>' +
+      '<form-builder-option property="persistent"></form-builder-option>' +
+      '<form-builder-option property="validate.required"></form-builder-option>' 
+    );
       $templateCache.put('formio/components/signature/display.html',
         '<ng-form>' +
           '<form-builder-option property="footer" label="Footer Label" placeholder="Footer Label" title="The footer text that appears below the signature area."></form-builder-option>' +
