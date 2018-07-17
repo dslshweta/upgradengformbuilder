@@ -29,7 +29,7 @@ function createFormController($rootScope, $scope, $stateParams,$state, OtherServ
             return;
         } 
 
-        let formDefination = StorageServiceHandler.getFormData() || [];
+        let formDefination = StorageServiceHandler.getFormData() ? StorageServiceHandler.getFormData(): [];
 
         let form = $rootScope.form;
         let formTitle = data;
