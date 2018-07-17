@@ -39,7 +39,7 @@ module.exports = function(app) {
     function($templateCache) {
       // Create the settings markup.
       //Basic Component template
-      $templateCache.put('formio/components/textfield/basic.html',
+      $templateCache.put('formio/components/signature/basic.html',
       '<form-builder-option property="footer" label="Footer Label" placeholder="Footer Label" title="The footer text that appears below the signature area."></form-builder-option>' +
       '<form-builder-option property="tooltip"></form-builder-option>' +
       '<form-builder-option property="persistent"></form-builder-option>' +
