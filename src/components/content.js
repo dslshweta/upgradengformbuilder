@@ -33,20 +33,21 @@ module.exports = function(app) {
             $scope.$emit('formBuilder:update');
           });
         },
-        views: [
-          {
-            name: 'Display',
-            template: 'formio/components/common/display.html'
-          },
-          {
-            name: 'API',
-            template: 'formio/components/common/api.html'
-          },
-          {
-            name: 'Conditional',
-            template: 'formio/components/common/conditional.html'
-          }
-        ]
+        //Stoped pop-up to directly implement content component
+        // views: [
+        //   {
+        //     name: 'Display',
+        //     template: 'formio/components/common/display.html'
+        //   },
+        //   {
+        //     name: 'API',
+        //     template: 'formio/components/common/api.html'
+        //   },
+        //   {
+        //     name: 'Conditional',
+        //     template: 'formio/components/common/conditional.html'
+        //   }
+        // ]
       });
     }
   ]);
