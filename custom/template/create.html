@@ -2,22 +2,25 @@
     <h2 align="center">{{form.formTitle}}</h2>
 </div>
 <div class="row top-row" ng-controller="createFormController">
-    <div class="col-md-4">
+    <div class="col-md-1"></div>
+    <div class="col-md-3 adjust-padding">
         <input type="text" class="form-control" placeholder="Please Enter form Title" ng-model="formTitle">
     </div>
     <div class="col-md-2">
         <button ng-if="!editForm" class="btn btn-success" ng-click="createForm(formTitle)">Create</button>
         <button ng-if="editForm" class="btn btn-success" ng-click="updateForm(formTitle)">Update</button>
-        
+        <button ng-if="editForm" class="btn btn-primary" ng-click="createNew()">Create new</button>
     </div>
     <!-- <div class="col-md-4">
         <select class="form-control form-type-select" ng-model="form.display" ng-options="display.name as display.title for display in displays"></select>
     </div> -->
 </div>
-<div>
-    <div class="well" style="background-color: #fdfdfd;">
+<div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10 well" style="background-color: #fdfdfd;">
         <form-builder form="form" options="options"></form-builder>
     </div>
+    <div class="col-md-1"></div>
 </div>
 <div>
     <div class="row">

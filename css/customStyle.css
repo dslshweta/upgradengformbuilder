@@ -63,8 +63,8 @@
   }
 
   .form-list ul li:hover {
-    background-color: gray;
-    color : #ffffff;
+    background-color: gainsboro;
+    color : #008cba;
   }
 
 
@@ -79,3 +79,10 @@
     padding: 15px;
     margin: 5px;
   }
+.adjust-padding {
+  padding-left: 0px;
+}
+
+#component-settings .nav-tabs {
+  font-size: 24px;
+}

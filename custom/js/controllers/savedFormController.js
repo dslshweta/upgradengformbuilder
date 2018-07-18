@@ -27,7 +27,14 @@ function savedFormController($rootScope, $scope, $state, OtherServiceHandler, St
     function renderForm(form) {
 
         document.getElementById('renderFormio').innerHTML = '';
-        Formio.createForm(document.getElementById('renderFormio'), form);
+        Formio.createForm(document.getElementById('renderFormio'), form).then(function(form) {
+            form.on('submit', (submission) => {
+              console.log('The form was just submitted!!!',submission);
+            });
+            form.on('error', (errors) => {
+              console.log('We have errors!');
+            })
+          });
     }
 
     function editForm(form,index){
