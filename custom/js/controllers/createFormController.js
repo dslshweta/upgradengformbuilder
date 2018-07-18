@@ -32,6 +32,7 @@ function createFormController($rootScope, $scope, $stateParams, $state, ngDialog
     //function assigning
     $scope.createForm = createForm;
     $scope.updateForm = updateForm;
+    $scope.createNew = createNew;
 
     //function calling
     function createForm(data) {
@@ -81,6 +82,13 @@ function createFormController($rootScope, $scope, $stateParams, $state, ngDialog
             width : 500,
             scope: $scope,
         });
+    }
+
+    function createNew(){
+        $stateParams = null;
+        $rootScope.form.formTitle = '';
+        $scope.formTitle = '';
+        $scope.editForm = false;
     }
 
 
