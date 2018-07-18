@@ -11,9 +11,9 @@ function savedFormController($rootScope, $scope, $state, OtherServiceHandler, St
 
     if ($state.current.name == 'saved') {
         $scope.formList = StorageServiceHandler.getFormData()
-        // if ($scope.formList && $scope.formList.length > 0) {
-        //     $scope.formDef = $scope.formList[0];
-        // }
+        if ($scope.formList && $scope.formList.length > 0) {
+            Formio.createForm(document.getElementById('renderFormio'), $scope.formList[0]);
+        }
     }
 
     //Assigning functions
@@ -25,8 +25,9 @@ function savedFormController($rootScope, $scope, $state, OtherServiceHandler, St
     //Definging functions
 
     function renderForm(form) {
-        $scope.formDef = form;
-         
+
+        document.getElementById('renderFormio').innerHTML = '';
+        Formio.createForm(document.getElementById('renderFormio'), form);
     }
 
     function editForm(form,index){
