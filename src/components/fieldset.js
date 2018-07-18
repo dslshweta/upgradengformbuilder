@@ -41,6 +41,7 @@ module.exports = function(app) {
       $templateCache.put('formio/components/fieldset/basic.html',
       '<ng-form>' +
       '<form-builder-option property="legend" label="Legend" placeholder="FieldSet Legend" title="The legend text to appear above this fieldset."></form-builder-option>' +
+      '<form-builder-option property="business_logic"></form-builder-option>' +
       '<form-builder-option property="tooltip"></form-builder-option>' +
       '<form-builder-option property="collapsible"></form-builder-option>' +
       '<form-builder-option property="collapsed" ng-if="component.collapsible"></form-builder-option>' +

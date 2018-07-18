@@ -45,6 +45,7 @@ module.exports = function(app) {
       //Created Basic template
       $templateCache.put('formio/components/number/basic.html',
         '<form-builder-option property="label"></form-builder-option>' +
+        '<form-builder-option property="business_logic"></form-builder-option>' +
         '<form-builder-option property="tooltip"></form-builder-option>' +
         '<form-builder-option property="errorLabel"></form-builder-option>' +
         '<form-builder-option property="multiple"></form-builder-option>' +

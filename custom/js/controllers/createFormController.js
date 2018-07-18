@@ -1,35 +1,46 @@
 angular
     .module('formBuilder')
-    .controller('createFormController',createFormController);
+    .controller('createFormController', createFormController);
 
-createFormController.$inject = ['$rootScope', '$scope', '$stateParams','$state', 'OtherServiceHandler', 'StorageServiceHandler'];
+createFormController.$inject = ['$rootScope', '$scope', '$stateParams', '$state', 'ngDialog', 'OtherServiceHandler', 'StorageServiceHandler'];
 
-function createFormController($rootScope, $scope, $stateParams,$state, OtherServiceHandler, StorageServiceHandler){
+function createFormController($rootScope, $scope, $stateParams, $state, ngDialog, OtherServiceHandler, StorageServiceHandler) {
 
+    $rootScope.form = {
+        components: [
+        ],
+        display: "form",
+        page: 0
+    }
 
     $scope.formRender = {};
+    $scope.editForm = false;
+    $scope.editIndex = null;
 
-    if($state.current.name = 'create'){
-        console.log('111111111111111',$stateParams.obj);
+    if ($state.current.name = 'create') {
 
-        if($stateParams.obj){
-            $scope.formRender =  $stateParams.obj.form
+        if ($stateParams.obj) {
+            $scope.editForm = true;
+            $scope.editIndex = $stateParams.obj.index;
+            $scope.formTitle = $stateParams.obj.form.formTitle;
             $rootScope.form = $stateParams.obj.form;
         }
-        
+
     }
+
 
     //function assigning
     $scope.createForm = createForm;
+    $scope.updateForm = updateForm;
 
     //function calling
-    function createForm(data){
-        if(!data){
+    function createForm(data) {
+        if (!data) {
             alert('Form Title is Required');
             return;
-        } 
+        }
 
-        let formDefination = StorageServiceHandler.getFormData() ? StorageServiceHandler.getFormData(): [];
+        let formDefination = StorageServiceHandler.getFormData() ? StorageServiceHandler.getFormData() : [];
 
         let form = $rootScope.form;
         let formTitle = data;
@@ -37,20 +48,41 @@ function createFormController($rootScope, $scope, $stateParams,$state, OtherServ
         let createdAt = OtherServiceHandler.getDate();
         let updatedAt = OtherServiceHandler.getDate();
 
-        
+
         form.formTitle = formTitle;
         form.createdAt = createdAt;
         form.updatedAt = updatedAt;
         form.formId = formId;
 
-        console.log('chelllllllllllllll',form);
+        formDefination.push(form);
 
-        formDefination.push(form); 
-        
         StorageServiceHandler.setFormData(formDefination);
+        ngDialog.open({
+            template: 'createSuccess.html',
+            className: 'ngdialog-theme-default',
+            width : 500,
+            scope: $scope,
+        });
 
     }
 
 
-    
+    function updateForm() {
+        if ($scope.editIndex === null) return
+        let formDefination = StorageServiceHandler.getFormData();
+        formDefination[$scope.editIndex] = $rootScope.form;
+        formDefination[$scope.editIndex].updatedAt = OtherServiceHandler.getDate();
+        formDefination[$scope.editIndex].formTitle = $scope.formTitle;
+        StorageServiceHandler.removeFormData();
+        StorageServiceHandler.setFormData(formDefination);
+        ngDialog.open({
+            template: 'updateSuccess.html',
+            className: 'ngdialog-theme-default',
+            width : 500,
+            scope: $scope,
+        });
+    }
+
+
+
 }

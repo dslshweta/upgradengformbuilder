@@ -1,16 +1,18 @@
-<div class="row top-row" ng-if="formRender">
-    <h2 align="center">{{formRender.formTitle}}</h2>
+<div class="row top-row" ng-if="form.formTitle">
+    <h2 align="center">{{form.formTitle}}</h2>
 </div>
 <div class="row top-row" ng-controller="createFormController">
     <div class="col-md-4">
         <input type="text" class="form-control" placeholder="Please Enter form Title" ng-model="formTitle">
     </div>
     <div class="col-md-2">
-        <button class="btn btn-success" ng-click="createForm(formTitle)">Create</button>
+        <button ng-if="!editForm" class="btn btn-success" ng-click="createForm(formTitle)">Create</button>
+        <button ng-if="editForm" class="btn btn-success" ng-click="updateForm(formTitle)">Update</button>
+        
     </div>
-    <div class="col-md-4">
+    <!-- <div class="col-md-4">
         <select class="form-control form-type-select" ng-model="form.display" ng-options="display.name as display.title for display in displays"></select>
-    </div>
+    </div> -->
 </div>
 <div>
     <div class="well" style="background-color: #fdfdfd;">
@@ -29,3 +31,22 @@
         
     </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+<script type="text/ng-template" id="createSuccess.html">
+    <h3>Success</h3><hr>
+    <div>
+          <span>Form Created Successfully</span><hr>
+    </div>
+    <div>
+          <button class="btn btn-success" ng-click="closeThisDialog()">Ok</button>
+    </div>
+</script>

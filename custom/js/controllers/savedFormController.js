@@ -11,9 +11,9 @@ function savedFormController($rootScope, $scope, $state, OtherServiceHandler, St
 
     if ($state.current.name == 'saved') {
         $scope.formList = StorageServiceHandler.getFormData()
-        if ($scope.formList && $scope.formList.length > 0) {
-            $scope.formDef = $scope.formList[0];
-        }
+        // if ($scope.formList && $scope.formList.length > 0) {
+        //     $scope.formDef = $scope.formList[0];
+        // }
     }
 
     //Assigning functions
@@ -25,8 +25,8 @@ function savedFormController($rootScope, $scope, $state, OtherServiceHandler, St
     //Definging functions
 
     function renderForm(form) {
-        console.log('ppppppppp',form);
         $scope.formDef = form;
+         
     }
 
     function editForm(form,index){
@@ -35,6 +35,10 @@ function savedFormController($rootScope, $scope, $state, OtherServiceHandler, St
         formObj.form = form;
         $state.go('create', {obj:formObj})
     }
+
+    $scope.$watch('formDef',function(old){
+        console.log('watch--------',old);
+    })
 
 
 }

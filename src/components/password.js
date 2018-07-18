@@ -51,6 +51,7 @@ module.exports = function(app) {
 
       $templateCache.put('formio/components/password/basic.html',
       '<form-builder-option property="label"></form-builder-option>' +
+      '<form-builder-option property="business_logic"></form-builder-option>' +
       '<form-builder-option property="tooltip"></form-builder-option>' +
       '<form-builder-option property="errorLabel"></form-builder-option>' +
       '<form-builder-option property="validate.minLength"></form-builder-option>' +

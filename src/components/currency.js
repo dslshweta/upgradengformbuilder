@@ -44,6 +44,7 @@ module.exports = function(app) {
       // Create the settings markup.
       //Basic Component template
       $templateCache.put('formio/components/currency/basic.html',
+      '<form-builder-option property="business_logic"></form-builder-option>' +
       '<form-builder-option property="label"></form-builder-option>' +
       '<form-builder-option property="tooltip"></form-builder-option>' +
       '<form-builder-option property="errorLabel"></form-builder-option>' +
