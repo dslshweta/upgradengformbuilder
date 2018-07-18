@@ -111,6 +111,7 @@ module.exports = function (app) {
       //Basic Component template
       $templateCache.put('formio/components/form/basic.html',
         '<form-builder-option property="label" label="Name" placeholder="Enter the name for this form field" title="The name for this field. It is only used for administrative purposes such as generating the automatic property name in the API tab (which may be changed manually)."></form-builder-option>' +
+        '<form-builder-option property="business_logic"></form-builder-option>' +
         '<div class="form-group">' +
         '<label for="form" form-builder-tooltip="The form to load within this form component..">{{\'Form\' | formioTranslate}}</label>' +
         '<select class="form-control" id="form" name="form" ng-options="value._id as value.title for value in forms" ng-model="component.form"></select>' +

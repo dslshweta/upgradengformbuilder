@@ -80,6 +80,7 @@ module.exports = function(app) {
       //Created Basic tab
       $templateCache.put('formio/components/checkbox/basic.html',
       '<form-builder-option property="label"></form-builder-option>' +
+      '<form-builder-option property="business_logic"></form-builder-option>' +
       '<form-builder-option property="tooltip"></form-builder-option>' +
       '<form-builder-option property="errorLabel"></form-builder-option>' +
       '<form-builder-option property="validate.required"></form-builder-option>' 

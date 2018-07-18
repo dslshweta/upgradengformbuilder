@@ -1,1 +1,45 @@
-<h1>Saved Form</h1>
+<div class="row top-row">
+    <h2 align="center">{{formDef.formTitle}}</h2>
+</div>
+
+<div>
+    <div class="col-md-3 form-list">
+        <ul>
+            <li ng-repeat="form in formList track by $index">
+                {{form.formTitle}}
+                <span ng-click="renderForm(form)" class="glyphicon glyphicon-eye-open text-success float-right"></span>
+                <span ng-click="editForm(form,$index)" class="glyphicon glyphicon-edit text-primary float-right"></span>
+            </li>
+        </ul>
+    </div>
+
+    <div ng-show="formList && formList.length > 0" class="col-md-8 form-render">
+        <div id="renderFormio"></div>
+    </div>
+    <div ng-if="!formList" class="col-md-9 form-render"> 
+       <h1 class="text-center text-primary">No Records found</h1>
+    </div>
+</div>
+
+
+
+<!-- 
+<div class="row top-row" ng-controller="savedFormController">
+    <formio form="formDef"></formio>
+</div> -->
+
+
+
+
+
+
+
+<script type="text/ng-template" id="updateSuccess.html">
+      <h3>Success</h3><hr>
+      <div>
+            <span>Form Updated Successfully</span><hr>
+      </div>
+      <div>
+            <button class="btn btn-success" ng-click="closeThisDialog()">Ok</button>
+      </div>
+</script>

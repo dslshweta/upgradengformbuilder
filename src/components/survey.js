@@ -41,6 +41,7 @@ module.exports = function(app) {
       //Basic Component template
       $templateCache.put('formio/components/survey/basic.html',
       '<form-builder-option property="label"></form-builder-option>' +
+      '<form-builder-option property="business_logic"></form-builder-option>' +
       '<form-builder-option property="tooltip"></form-builder-option>' +
       '<value-builder data="component.questions" default="component.questions" label="Questions" tooltip-text="The questions you would like to as in this survey question."></value-builder>' +
       '<form-builder-option property="inline" type="checkbox" label="Inline Layout" title="Displays the radio buttons horizontally."></form-builder-option>' +

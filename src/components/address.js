@@ -41,6 +41,7 @@ module.exports = function(app) {
       //Basic Component template
       $templateCache.put('formio/components/address/basic.html',
       '<form-builder-option property="label"></form-builder-option>' +
+      '<form-builder-option property="business_logic"></form-builder-option>' +
       '<form-builder-option property="tooltip"></form-builder-option>' +
       '<form-builder-option property="errorLabel"></form-builder-option>' +
       '<form-builder-option property="multiple" label="Allow Multiple Addresses"></form-builder-option>' +
