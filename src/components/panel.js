@@ -27,6 +27,10 @@ module.exports = function(app) {
         }],
         views: [
           {
+            name: 'Basic',
+            template: 'formio/components/panel/basic.html'
+          },
+          {
             name: 'Display',
             template: 'formio/components/panel/display.html'
           },
@@ -52,6 +56,24 @@ module.exports = function(app) {
   app.run([
     '$templateCache',
     function($templateCache) {
+
+      //Basic Component template
+      $templateCache.put('formio/components/panel/basic.html',
+      '<ng-form>' +
+      '<form-builder-option property="title" label="Title" placeholder="Panel Title" title="The title text that appears in the header of this panel."></form-builder-option>' +
+      '<form-builder-option property="business_logic"></form-builder-option>' +
+      '<form-builder-option property="tooltip"></form-builder-option>' +
+      '<div class="form-group">' +
+        '<label for="theme" form-builder-tooltip="The color theme of this panel.">{{\'Theme\' | formioTranslate}}</label>' +
+        '<select class="form-control" id="theme" name="theme" ng-options="theme.name as theme.title | formioTranslate for theme in themes" ng-model="component.theme"></select>' +
+      '</div>' +
+      '<div class="form-group">' +
+        '<label for="breadcrumb" form-builder-tooltip="The breadcrumb to show with this page.">Show Breadcrumb</label>' +
+        '<select class="form-control" id="breadcrumb" name="breadcrumb" ng-options="breadcrumb.name as breadcrumb.title for breadcrumb in breadcrumbs" ng-model="component.breadcrumb"></select>' +
+      '</div>' +
+      
+    '</ng-form>'
+    );
       $templateCache.put('formio/formbuilder/panel.html',
         '<div class="panel panel-{{ component.theme }}">' +
           '<div ng-if="component.title" class="panel-heading"><h3 class="panel-title">' +

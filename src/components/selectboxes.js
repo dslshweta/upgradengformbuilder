@@ -6,6 +6,10 @@ module.exports = function(app) {
         icon: 'fa fa-plus-square',
         views: [
           {
+            name: 'Basic',
+            template: 'formio/components/selectboxes/basic.html'
+          },
+          {
             name: 'Display',
             template: 'formio/components/selectboxes/display.html'
           },
@@ -34,6 +38,15 @@ module.exports = function(app) {
     '$templateCache',
     function($templateCache) {
       // Create the settings markup.
+      //Created  Basic template
+      $templateCache.put('formio/components/selectboxes/basic.html',
+      '<form-builder-option property="label"></form-builder-option>' +
+      '<form-builder-option property="business_logic"></form-builder-option>' +
+      '<form-builder-option property="tooltip"></form-builder-option>' +
+      '<form-builder-option property="errorLabel"></form-builder-option>' +
+      '<value-builder-with-shortcuts form="form" component="component" data="component.values" default="component.defaultValue" label="Values" tooltip-text="The radio button values that can be picked for this field. Values are text submitted with the form data. Labels are text that appears next to the radio buttons on the form."></value-builder-with-shortcuts>' +
+      '<form-builder-option property="validate.required"></form-builder-option>' 
+    );
       $templateCache.put('formio/components/selectboxes/display.html',
         '<ng-form>' +
           '<form-builder-option property="label"></form-builder-option>' +

@@ -6,6 +6,10 @@ module.exports = function(app) {
         icon: 'fa fa-home',
         views: [
           {
+            name: 'Basic',
+            template: 'formio/components/address/basic.html'
+          },
+          {
             name: 'Display',
             template: 'formio/components/address/display.html'
           },
@@ -33,7 +37,16 @@ module.exports = function(app) {
   app.run([
     '$templateCache',
     function($templateCache) {
-      // Create the settings markup.
+      // Create the settings markup. 
+      //Basic Component template
+      $templateCache.put('formio/components/address/basic.html',
+      '<form-builder-option property="label"></form-builder-option>' +
+      '<form-builder-option property="business_logic"></form-builder-option>' +
+      '<form-builder-option property="tooltip"></form-builder-option>' +
+      '<form-builder-option property="errorLabel"></form-builder-option>' +
+      '<form-builder-option property="multiple" label="Allow Multiple Addresses"></form-builder-option>' +
+      '<form-builder-option property="validate.required"></form-builder-option>' 
+    );
       $templateCache.put('formio/components/address/display.html',
         '<ng-form>' +
           '<form-builder-option property="label"></form-builder-option>' +

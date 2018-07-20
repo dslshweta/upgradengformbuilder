@@ -1,5 +1,14 @@
 var app = angular.module('ngFormBuilder');
-
+//Disabling components not needed
+angular.module('ngFormBuilder')
+.run(['formioComponents', function(formioComponents) {
+  formioComponents.components.button.disabled = true;
+  formioComponents.components.hidden.disabled = true;
+  formioComponents.components.resource.disabled = true;
+  formioComponents.components.editgrid.disabled = true;
+  
+  
+}]);
 // Basic
 require('./components')(app);
 require('./textfield')(app);
@@ -13,7 +22,6 @@ require('./radio')(app);
 require('./htmlelement')(app);
 require('./content')(app);
 require('./button')(app);
-
 
 
 // Special

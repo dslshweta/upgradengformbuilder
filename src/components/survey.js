@@ -6,6 +6,10 @@ module.exports = function(app) {
         icon: 'fa fa-list',
         views: [
           {
+            name: 'Basic',
+            template: 'formio/components/survey/basic.html'
+          },
+          {
             name: 'Display',
             template: 'formio/components/survey/display.html'
           },
@@ -34,6 +38,15 @@ module.exports = function(app) {
     '$templateCache',
     function($templateCache) {
       // Create the settings markup.
+      //Basic Component template
+      $templateCache.put('formio/components/survey/basic.html',
+      '<form-builder-option property="label"></form-builder-option>' +
+      '<form-builder-option property="business_logic"></form-builder-option>' +
+      '<form-builder-option property="tooltip"></form-builder-option>' +
+      '<value-builder data="component.questions" default="component.questions" label="Questions" tooltip-text="The questions you would like to as in this survey question."></value-builder>' +
+      '<form-builder-option property="inline" type="checkbox" label="Inline Layout" title="Displays the radio buttons horizontally."></form-builder-option>' +
+      '<form-builder-option property="validate.required"></form-builder-option>' 
+    );
       $templateCache.put('formio/components/survey/display.html',
         '<ng-form>' +
           '<form-builder-option property="label"></form-builder-option>' +

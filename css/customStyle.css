@@ -47,3 +47,42 @@
     height: 28px;
     vertical-align: top;
   }
+
+  .top-row {
+    margin-top: 60px;
+    margin-bottom: 15px;
+  }
+
+  .form-list ul{
+    list-style-type: none;
+  }
+  
+  .form-list ul li {
+    margin: 3px;
+    padding: 5px 10px;
+  }
+
+  .form-list ul li:hover {
+    background-color: gainsboro;
+    color : #008cba;
+  }
+
+
+  .form-list ul li span {
+    float: right;
+    margin: 0px 5px;
+    cursor: pointer;
+  }
+
+  .form-render {
+    background-color: gainsboro;
+    padding: 15px;
+    margin: 5px;
+  }
+.adjust-padding {
+  padding-left: 0px;
+}
+
+#component-settings .nav-tabs {
+  font-size: 24px;
+}

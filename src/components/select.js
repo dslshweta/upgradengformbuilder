@@ -7,6 +7,10 @@ module.exports = function(app) {
         icon: 'fa fa-th-list',
         views: [
           {
+            name: 'Basic',
+            template: 'formio/components/select/basic.html'
+          },
+          {
             name: 'Display',
             template: 'formio/components/select/display.html'
           },
@@ -150,6 +154,18 @@ module.exports = function(app) {
     '$templateCache',
     function($templateCache) {
       // Create the settings markup.
+      //Created Basic template
+      $templateCache.put('formio/components/select/basic.html',
+      '<form-builder-option property="label"></form-builder-option>' +
+      '<form-builder-option property="business_logic"></form-builder-option>' +
+      '<form-builder-option property="tooltip"></form-builder-option>' +
+      '<form-builder-option property="errorLabel"></form-builder-option>' +
+      '<form-builder-option property="multiple"></form-builder-option>' +
+      '<form-builder-option property="validate.required"></form-builder-option>'+
+      '<ng-form>' +
+      '<div class="form-group">' +
+      '<value-builder data="component.data.values" label="Data Source Values" tooltip-text="Values to use as the data source. Labels are shown in the select field. Values are the corresponding values saved with the submission."></value-builder>'
+    );
       $templateCache.put('formio/components/select/display.html',
         '<ng-form>' +
           '<form-builder-option property="label"></form-builder-option>' +

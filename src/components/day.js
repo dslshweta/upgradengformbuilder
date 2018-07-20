@@ -6,6 +6,10 @@ module.exports = function(app) {
         icon: 'fa fa-calendar',
         views: [
           {
+            name: 'Basic',
+            template: 'formio/components/day/basic.html'
+          },
+          {
             name: 'Display',
             template: 'formio/components/day/display.html'
           },
@@ -38,6 +42,17 @@ module.exports = function(app) {
     '$templateCache',
     function($templateCache) {
       // Create the settings markup.
+      //Basic Component template
+      $templateCache.put('formio/components/day/basic.html',
+      '<form-builder-option property="label"></form-builder-option>' +
+      '<form-builder-option property="business_logic"></form-builder-option>' +
+      '<form-builder-option property="tooltip"></form-builder-option>' +
+      '<form-builder-option property="errorLabel"></form-builder-option>' +
+      '<form-builder-option property="fields.year.hide" type="checkbox" label="Hide Year" title="Hide the year part of the component."></form-builder-option>' +
+      '<form-builder-option property="fields.day.required" label="Require Day" type="checkbox"></form-builder-option>' +
+      '<form-builder-option property="fields.month.required" label="Require Month" type="checkbox"></form-builder-option>' +
+      '<form-builder-option property="fields.year.required" label="Require Year" type="checkbox"></form-builder-option>' 
+    );
       $templateCache.put('formio/components/day/display.html',
         '<ng-form>' +
           '<form-builder-option property="label"></form-builder-option>' +

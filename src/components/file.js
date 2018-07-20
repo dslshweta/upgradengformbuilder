@@ -22,6 +22,10 @@ module.exports = function(app) {
         icon: 'fa fa-file',
         views: [
           {
+            name: 'Bsic',
+            template: 'formio/components/file/basic.html'
+          },
+          {
             name: 'Display',
             template: 'formio/components/file/display.html'
           },
@@ -50,6 +54,14 @@ module.exports = function(app) {
     '$templateCache',
     function($templateCache) {
       // Create the settings markup.
+      //Basic Component template
+      $templateCache.put('formio/components/file/basic.html',
+      '<form-builder-option property="label"></form-builder-option>' +
+      '<form-builder-option property="business_logic"></form-builder-option>' +
+      '<form-builder-option property="tooltip"></form-builder-option>' +
+      '<form-builder-option property="multiple"></form-builder-option>' +
+      '<form-builder-option property="validate.required"></form-builder-option>' 
+    );
       $templateCache.put('formio/components/file/display.html',
         '<ng-form>' +
           '<form-builder-option property="label"></form-builder-option>' +

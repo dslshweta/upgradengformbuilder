@@ -31,6 +31,10 @@ module.exports = function(app) {
         }],
         views: [
           {
+            name: 'Basic',
+            template: 'formio/components/datagrid/basic.html'
+          },
+          {
             name: 'Display',
             template: 'formio/components/datagrid/display.html'
           },
@@ -57,6 +61,13 @@ module.exports = function(app) {
   app.run([
     '$templateCache',
     function($templateCache) {
+      //Basic Component template
+      $templateCache.put('formio/components/textfield/basic.html',
+      '<form-builder-option property="label"></form-builder-option>' +
+      '<form-builder-option property="business_logic"></form-builder-option>' +
+      '<form-builder-option property="tooltip"></form-builder-option>' +
+      '<form-builder-option property="errorLabel"></form-builder-option>' 
+    );
       $templateCache.put('formio/components/datagrid/display.html',
         '<ng-form>' +
         '<form-builder-option property="label"></form-builder-option>' +

@@ -7,6 +7,10 @@ module.exports = function(app) {
         icon: 'fa fa-th-large',
         views: [
           {
+            name: 'Basic',
+            template: 'formio/components/fieldset/basic.html'
+          },
+          {
             name: 'Display',
             template: 'formio/components/fieldset/display.html'
           },
@@ -33,6 +37,16 @@ module.exports = function(app) {
   app.run([
     '$templateCache',
     function($templateCache) {
+      //Basic Component template
+      $templateCache.put('formio/components/fieldset/basic.html',
+      '<ng-form>' +
+      '<form-builder-option property="legend" label="Legend" placeholder="FieldSet Legend" title="The legend text to appear above this fieldset."></form-builder-option>' +
+      '<form-builder-option property="business_logic"></form-builder-option>' +
+      '<form-builder-option property="tooltip"></form-builder-option>' +
+      '<form-builder-option property="collapsible"></form-builder-option>' +
+      '<form-builder-option property="collapsed" ng-if="component.collapsible"></form-builder-option>' +
+    '</ng-form>'
+    );
       $templateCache.put('formio/formbuilder/fieldset.html',
         '<fieldset>' +
           '<legend ng-if="component.legend">' +

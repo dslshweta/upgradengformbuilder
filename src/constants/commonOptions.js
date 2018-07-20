@@ -357,5 +357,10 @@ module.exports = {
     label: 'Collapsed',
     type: 'checkbox',
     tooltip: 'Component\'s body initially hidden.'
+  },
+  'business_logic' : {
+    label: 'Business Logic',
+    type: 'textarea',
+    tooltip: 'Add Your business login here.'
   }
 };
