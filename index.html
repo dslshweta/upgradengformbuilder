@@ -14,7 +14,8 @@
   <link rel="stylesheet" href="css/customStyle.css" />
 </head>
 
-<body ng-app="formBuilder">
+<!-- <body ng-app="formBuilder"> -->
+<body>
   <!-- BROWSE HAPPY BEGINS HERE -->
 
 
@@ -30,11 +31,15 @@
               <li ui-sref-active="active">
                 <a ui-sref="saved">Saved</a>
               </li>
+              <li ui-sref-active="active">
+                <a ui-sref="home">Home Angular 2 Component</a>
+              </li>
             </ul>
           </div>
         </nav>
         <div class="main">
           <ui-view></ui-view>
+          <!-- <div ng-view></div> -->
         </div>
       </div>
     </div>
@@ -51,7 +56,8 @@
   <script src='https://unpkg.com/formiojs@latest/dist/formio.full.min.js'></script>
 
   <!-- Custom Js Files -->
-  <script src="custom/js/main.js"></script>
+  <!-- <script src="custom/js/main.js"></script> -->
+  <script src="dist/dist/bundle.js"></script>
   <script src="custom/js/custom.js"></script>
   <script src="custom/js/routing.js"></script>
 
